@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const db = require('./config/connection');
 const routes = require('./routes');
 
@@ -8,12 +7,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
-app.use('/api', routes);
-
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/socialnetworkingapi', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+app.use(routes);
 
 db.once('open', () => {
     app.listen(PORT, () => {

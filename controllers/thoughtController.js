@@ -1,6 +1,7 @@
-const { Thought, User } = require("../models");
+const { Thought, Reaction, User } = require("../models");
+const { application } = require('express');
 
-const thoughtController = {
+module.exports = {
   getThoughts(req, res) {
     Thought.find()
       .then((dbThoughtData) => {
@@ -121,5 +122,3 @@ const thoughtController = {
       });
   },
 };
-
-module.exports = thoughtController;

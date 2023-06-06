@@ -1,6 +1,7 @@
 const { User, Thought } = require("../models");
+const { application } = require('express');
 
-const userController = {
+module.exports = {
   getUsers(req, res) {
     User.find()
       .select("-__v")
@@ -118,5 +119,3 @@ const userController = {
       });
   },
 };
-
-module.exports = userController;
